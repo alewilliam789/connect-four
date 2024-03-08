@@ -3,4 +3,5 @@ export interface MenuButtonContents {
     svgImage : string | null;
     isCenter : boolean;
     backgroundColor : '--primary-white' | '--primary-red' | '--primary-yellow';
+    buttonRoute : '' | 'play' | 'rules';
   }

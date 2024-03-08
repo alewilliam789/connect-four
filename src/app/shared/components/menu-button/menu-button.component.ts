@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MenuButtonContents } from '../../types/menu-button';
+import { MenuButtonContents } from '../../types/menu-button.types';
 
 @Component({
   selector: 'app-menu-button',
@@ -11,6 +11,7 @@ export class MenuButtonComponent {
     buttonText : '',
     svgImage : null,
     isCenter : false,
-    backgroundColor : '--primary-white'
+    backgroundColor : '--primary-white',
+    buttonRoute : '',
   };
 }
