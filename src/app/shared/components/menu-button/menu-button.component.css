@@ -1,0 +1,22 @@
+.c-menu-button {
+    width: 400px;
+    height: 72px;
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 10px var(--primary-black);
+    padding: 13px 17px;
+
+    &:hover {
+        box-shadow: 0px 10px var(--primary-purple1);
+    }
+}
+
+.l-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.center {
+        justify-content: center;
+    }
+}

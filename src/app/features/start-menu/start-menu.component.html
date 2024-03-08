@@ -1,1 +1,10 @@
-<p>start-menu works!</p>
+<menu class="c-start-menu l-start-menu">
+    <div class="c-start-menu__content l-start-menu__content">
+        <img class="c-start-menu__logo" src="/assets/images/logo.svg"/>
+        <div class="l-start-menu__buttons">
+            <ng-container *ngFor="let button of start_buttons">
+                <app-menu-button [contents]="button"></app-menu-button>
+            </ng-container>
+        </div>
+    </div>
+</menu>

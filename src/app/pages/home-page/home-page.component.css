@@ -1,0 +1,18 @@
+.p-home {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 375px) {
+    .p-home {
+        background-color: var(--primary-purple2);
+    }
+}
+
+@media (min-width: 376px) {
+
+    .p-home {
+        background-color: var(--primary-purple1);
+    }
+    
+}

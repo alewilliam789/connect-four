@@ -9,6 +9,9 @@ import { GamePageComponent } from './pages/game-page/game-page.component';
 import { RulePageComponent } from './pages/rule-page/rule-page.component';
 import { GameMenuComponent } from './features/game-menu/game-menu.component';
 import { StartMenuComponent } from './features/start-menu/start-menu.component';
+import { MenuButtonComponent } from './shared/components/menu-button/menu-button.component';
+import { GameButtonComponent } from './shared/components/game-button/game-button.component';
+import { CssVariablePipe } from './shared/pipes/css-variable/css-variable.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { StartMenuComponent } from './features/start-menu/start-menu.component';
     GamePageComponent,
     RulePageComponent,
     GameMenuComponent,
-    StartMenuComponent
+    StartMenuComponent,
+    MenuButtonComponent,
+    GameButtonComponent,
+    CssVariablePipe,
   ],
   imports: [
     BrowserModule,

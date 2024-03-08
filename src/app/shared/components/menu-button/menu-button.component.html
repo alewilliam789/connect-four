@@ -1,0 +1,4 @@
+<button class="c-menu-button l-menu-button" [class.center]="contents.isCenter" [style.background]="contents.backgroundColor | cssvariable">
+    <p class="heading md">{{contents.buttonText}}</p>
+    <img *ngIf="contents.svgImage != null" src="{{contents.svgImage}}"/>
+</button>
