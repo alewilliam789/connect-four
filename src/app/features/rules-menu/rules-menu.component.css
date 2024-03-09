@@ -1,0 +1,43 @@
+.c-rules-menu {
+    width: 480px;
+    height: 537px;
+    margin-top: 182px;
+    background-color: var(--primary-white);
+    border: 3px solid black;
+    border-radius: 40px;
+    box-shadow: 0px 10px var(--primary-black);
+}
+
+.c-rules-menu__header {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+.c-rules-menu__objective {
+    margin: 0px 34px;
+    margin-bottom: 50px;
+}
+
+.c-rules-menu__objective-header {
+    color: var(--primary-purple1);
+    margin-bottom: 16px;
+}
+
+.c-rules-menu__rules {
+    margin: 0px 34px;
+    margin-top: 50px;
+}
+
+.c-rules-menu__rules-bullets {
+    display: flex;
+    gap: 20px;
+    font-family: 'Space Grotesk';
+    margin: 12px 0px;
+}
+
+.c-rules-menu__check {
+    margin-top: 60px;
+    margin-left: 208px;
+}
+

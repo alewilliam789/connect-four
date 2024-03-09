@@ -1,0 +1,17 @@
+.p-rules {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 375px) {
+    .p-rules {
+        background-color: var(--primary-purple2);
+    }
+}
+
+@media (min-width: 376px) {
+
+    .p-rules {
+        background-color: var(--primary-purple1);
+    }
+}

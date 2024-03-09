@@ -1,4 +1,4 @@
 <button class="c-menu-button l-menu-button" [routerLink]="contents.buttonRoute" [class.center]="contents.isCenter" [style.background]="contents.backgroundColor | cssvariable">
-    <p class="heading md">{{contents.buttonText}}</p>
+    <h2 class="heading md">{{contents.buttonText}}</h2>
     <img *ngIf="contents.svgImage != null" src="{{contents.svgImage}}"/>
 </button>

@@ -12,6 +12,8 @@ import { StartMenuComponent } from './features/start-menu/start-menu.component';
 import { MenuButtonComponent } from './shared/components/menu-button/menu-button.component';
 import { GameButtonComponent } from './shared/components/game-button/game-button.component';
 import { CssVariablePipe } from './shared/pipes/css-variable/css-variable.pipe';
+import { RulesMenuComponent } from './features/rules-menu/rules-menu.component';
+import { CheckButtonComponent } from './shared/svgs/check-button/check-button.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CssVariablePipe } from './shared/pipes/css-variable/css-variable.pipe';
     MenuButtonComponent,
     GameButtonComponent,
     CssVariablePipe,
+    RulesMenuComponent,
+    CheckButtonComponent,
   ],
   imports: [
     BrowserModule,
