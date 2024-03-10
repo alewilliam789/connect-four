@@ -25,7 +25,7 @@
 }
 
 
-@media (max-width: 375px) {
+@media (max-width: 550px) {
     
     .c-start-menu {
         width: 100%;
@@ -41,7 +41,7 @@
     }
 }
 
-@media (min-width: 376px) {
+@media (min-width: 551px) {
 
     .c-start-menu {
         margin-top: 232px;

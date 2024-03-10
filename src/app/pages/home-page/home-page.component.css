@@ -1,15 +1,17 @@
 .p-home {
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 550px) {
     .p-home {
         background-color: var(--primary-purple2);
+        background-repeat: repeat-y;
     }
 }
 
-@media (min-width: 376px) {
+@media (min-width: 551px) {
 
     .p-home {
         background-color: var(--primary-purple1);

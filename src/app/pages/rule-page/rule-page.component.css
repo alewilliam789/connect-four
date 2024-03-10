@@ -1,6 +1,7 @@
 .p-rules {
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 }
 
 @media (max-width: 375px) {
@@ -12,6 +13,6 @@
 @media (min-width: 376px) {
 
     .p-rules {
-        background-color: var(--primary-purple1);
+        background-color: var(--primary-purple2);
     }
 }

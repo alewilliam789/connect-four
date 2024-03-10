@@ -10,7 +10,7 @@ export class CheckButtonComponent {
   fillColor = '#000000';
 
   onMouseEnter() {
-    this.fillColor = 'var(--primary-purple2)';
+    this.fillColor = 'var(--primary-purple1)';
   }
 
   onMouseLeave() {

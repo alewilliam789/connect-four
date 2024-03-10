@@ -1,7 +1,4 @@
 .c-rules-menu {
-    width: 480px;
-    height: 537px;
-    margin-top: 182px;
     background-color: var(--primary-white);
     border: 3px solid black;
     border-radius: 40px;
@@ -37,7 +34,38 @@
 }
 
 .c-rules-menu__check {
-    margin-top: 60px;
-    margin-left: 208px;
+    display: flex;
+    justify-content: center;
+    margin-top: -34px;
 }
 
+
+@media (max-width: 350px) {
+    .c-rules-menu {
+        width: 250px;
+        height: 680px;
+        margin-top: 97px;
+    }
+
+    .c-rules-menu__check {
+        margin-top: -17px;
+    }
+}
+
+@media (min-width: 351px) and (max-width: 550px) {
+    
+    .c-rules-menu {
+        width: 335px;
+        height: 586px;
+        margin-top: 97px;
+    }
+}
+
+@media (min-width: 551px) {
+
+    .c-rules-menu {
+        width: 480px;
+        height: 537px;
+        margin-top: 228px;
+    } 
+}
