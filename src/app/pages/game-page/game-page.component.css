@@ -1,6 +1,7 @@
 .p-game-board {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (max-width: 375px) {
@@ -12,7 +13,7 @@
 @media (min-width: 376px) {
 
     .p-game-board {
-        background-color: var(--primary-purple1);
+        background-color: var(--primary-purple2);
     }
     
 }

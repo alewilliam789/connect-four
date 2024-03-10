@@ -1,0 +1,8 @@
+.c-game-button {
+    width: 86px;
+    height: 39px;
+    border-radius: 20px;
+    color: var(--primary-white);
+    background-color: var(--primary-purple1);
+    border: none;
+}

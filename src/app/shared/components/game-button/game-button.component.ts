@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game-button',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./game-button.component.css']
 })
 export class GameButtonComponent {
+
+  @Input() buttonText : string = "";
 
 }

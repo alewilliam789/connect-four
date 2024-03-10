@@ -14,6 +14,8 @@ import { GameButtonComponent } from './shared/components/game-button/game-button
 import { CssVariablePipe } from './shared/pipes/css-variable/css-variable.pipe';
 import { RulesMenuComponent } from './features/rules-menu/rules-menu.component';
 import { CheckButtonComponent } from './shared/svgs/check-button/check-button.component';
+import { BoardGridComponent } from './features/game-board/components/board-grid/board-grid.component';
+import { BoardHeaderComponent } from './pages/game-page/layout/board-header/board-header.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { CheckButtonComponent } from './shared/svgs/check-button/check-button.co
     CssVariablePipe,
     RulesMenuComponent,
     CheckButtonComponent,
+    BoardGridComponent,
+    BoardHeaderComponent,
   ],
   imports: [
     BrowserModule,
