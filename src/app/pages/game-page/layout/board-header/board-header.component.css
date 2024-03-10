@@ -1,0 +1,13 @@
+:host {
+    margin-top: 53px;
+    margin-bottom: 17px;
+}
+
+
+.c-board-header {
+    width: 632px;
+    height: 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
