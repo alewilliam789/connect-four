@@ -1,6 +1,6 @@
-<div class="c-board-grid">
-    <div class="c-board-grid__selection l-board-grid__selection">
-        <div class="c-board-grid__columns" *ngFor="let n of numberArray(7)"><img src="/assets/images/marker-red.svg"></div>
+<div class="c-board_markers"><img #current_marker class="c-board__marker" src="{{ currentPlayer == 1 ? '/assets/images/marker-red.svg':'/assets/images/marker-yellow.svg'}}" *ngFor="let n of numberArray(7); let i = index" id="marker-{{i+1}}"></div>
+<div class="c-board">
+    <div class="c-board__grid">
+        <div #current_column class="c-board__slot" (mouseover)="onMouseOverColumn(current_column)" (mouseleave)="onMouseLeaveColumn(current_column)" (click)="addCounterToColumn(current_column)" *ngFor="let n of numberArray(7); let i = index" id="column-{{i+1}}"></div>
     </div>
-    <div class="c-board-grid__back"></div>
 </div>
