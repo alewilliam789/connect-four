@@ -1,0 +1,29 @@
+:host {
+    margin-top: -40px;
+}
+
+
+
+.c-game-timer {
+    width: 191px;
+    height: 150px;
+    color: var(--primary-white);
+    border-radius: 20px;
+    box-shadow: 0px 10px var(--primary-black);
+    background-size: cover;
+}
+
+.c-game-timer--player-1 {
+    background-image: url('/assets/images/timer-red.svg');
+}
+
+.c-game-timer--player-2 {
+    background-image: url('/assets/images/timer-yellow.svg');
+}
+
+.c-game-timer__text {
+    padding-top: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

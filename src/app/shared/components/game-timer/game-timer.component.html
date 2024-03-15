@@ -1,0 +1,6 @@
+<div class="c-game-timer l-game-timer" [ngClass]="(currentGame.currentMove$ | async) == 1 ? 'c-game-timer--player-1' : 'c-game-timer--player-2'">
+    <div class="c-game-timer__text">
+        <h4 class="heading xs">PLAYER {{currentGame.currentMove$ | async }}'S TURN</h4>
+        <h1 class="heading lg">{{currentGame.timer$ | async }}</h1>
+    </div>
+</div>
