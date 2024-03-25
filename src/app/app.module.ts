@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,10 @@ import { GameButtonComponent } from './shared/components/game-button/game-button
 import { CssVariablePipe } from './shared/pipes/css-variable/css-variable.pipe';
 import { RulesMenuComponent } from './features/rules-menu/rules-menu.component';
 import { CheckButtonComponent } from './shared/svgs/check-button/check-button.component';
-
+import { BoardHeaderComponent } from './pages/game-page/layout/board-header/board-header.component';
+import { GameTimerComponent } from './shared/components/game-timer/game-timer.component';
+import { PlayerCardComponent } from './shared/components/player-card/player-card.component';
+import { WinMenuComponent } from './shared/components/win-menu/win-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +33,14 @@ import { CheckButtonComponent } from './shared/svgs/check-button/check-button.co
     CssVariablePipe,
     RulesMenuComponent,
     CheckButtonComponent,
+    BoardHeaderComponent,
+    GameTimerComponent,
+    PlayerCardComponent,
+    WinMenuComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

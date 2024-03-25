@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { GameSessionService } from 'src/app/core/services/game-session.service';
 
 @Component({
   selector: 'app-game-button',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class GameButtonComponent {
 
+  @Input() buttonText : string = "";
+  @Output() wasClickedEvent = new EventEmitter<HTMLButtonElement>();
+
+  onButtonClick(button : HTMLButtonElement) {
+    this.wasClickedEvent.emit(button);
+  }
 }

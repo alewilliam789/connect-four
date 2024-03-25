@@ -1,0 +1,132 @@
+.c-player-card {
+    width: 141px;
+    height: 160px;
+    background-color: var(--primary-white);
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 10px var(--primary-black);
+}
+
+.l-player-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.l-player-card--player-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.c-player-card__icon--player-1 {
+    margin-top: -29.5px;
+    content: url('/assets/images/player-one.svg');
+}
+
+.c-player-card__icon--player-2 {
+    margin-top: -29.5px;
+    content: url('/assets/images/player-two.svg');
+}
+
+.l-player-card__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.l-player-card__text--player-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.c-player-card__header-1 {
+    font-size: 56px;
+    line-height: 71px;
+}
+
+.c-player-card__header-3 {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+
+@media (max-width: 1180px) {
+    .c-player-card {
+        width: 269px;
+        height: 100px;
+    }
+
+    .l-player-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .l-player-card--player-2 {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    .c-player-card__icon--player-1 {
+        margin-top: 0px;
+        margin-left: -25px;
+        content: url('/assets/images/player-one.svg');
+    }
+    
+    .c-player-card__icon--player-2 {
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: -25px;
+        content: url('/assets/images/player-two.svg');
+    }
+
+    .l-player-card__text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .l-player-card__text--player-2 {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .c-player-card {
+        width: 142px;
+        height: 81px;
+    }
+
+    .l-player-card__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
+
+    .l-player-card__text--player-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
+
+    .c-player-card__header-1 {
+        font-size: 24px;
+        line-height: 31px;
+    }
+    
+    .c-player-card__header-3 {
+        font-size: 16px;
+        line-height: 21px;
+    }
+}

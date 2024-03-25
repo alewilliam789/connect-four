@@ -1,0 +1,43 @@
+:host {
+    margin-top: 53px;
+    margin-bottom: 17px;
+}
+
+
+.c-board-header {
+    width: 632px;
+    height: 52px;
+}
+
+.c-board-header__logo {
+    width: 52px;
+    height: 52px;
+}
+
+.l-board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 1180px){
+
+    :host {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+}
+
+@media (max-width: 767px){
+
+    .c-board-header {
+        width: 335px;
+        height: 40px;
+    }
+
+    .c-board-header__logo {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,18 +1,54 @@
 .p-game-board {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--primary-purple2);
 }
 
-@media (max-width: 375px) {
-    .p-game-board {
-        background-color: var(--primary-purple2);
-    }
+.p-game {
+    display: flex;
+    align-items: center;
+    gap: 60px;
 }
 
-@media (min-width: 376px) {
+.p-game__small {
+    display: none;
+}
 
-    .p-game-board {
-        background-color: var(--primary-purple1);
+@media (max-width: 1180px){
+    .p-game {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
     }
-    
+
+    .p-game__large-player-cards {
+        display: none;
+    }
+
+    .p-game__small {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .p-game {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .p-game__large-player-cards {
+        display: none;
+    }
+
+    .p-game__small {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
 }
