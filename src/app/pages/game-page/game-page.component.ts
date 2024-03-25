@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameSessionService } from 'src/app/core/services/game-session.service';
 
 @Component({
   selector: 'app-game-page',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class GamePageComponent {
 
+  constructor(public currentGame : GameSessionService){}
 }

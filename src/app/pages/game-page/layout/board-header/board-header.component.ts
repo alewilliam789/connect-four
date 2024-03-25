@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GameSessionService } from 'src/app/core/services/game-session.service';
 
 @Component({
   selector: 'app-board-header',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./board-header.component.css']
 })
 export class BoardHeaderComponent {
+  
+  constructor(private currentGame : GameSessionService) {}
+
+  menuButtonClicked(){
+    this.currentGame.paused$.next(!this.currentGame.paused$.value);
+  }
+
+  restartButtonClicked(){
+    this.currentGame.reset$.next(true);
+  }
 
 }

@@ -5,6 +5,8 @@
 
 
 .c-game-timer {
+    position: relative;
+    z-index: 3;
     width: 191px;
     height: 150px;
     color: var(--primary-white);
@@ -14,10 +16,12 @@
 }
 
 .c-game-timer--player-1 {
+    color: var(--primary-white);
     background-image: url('/assets/images/timer-red.svg');
 }
 
 .c-game-timer--player-2 {
+    color: var(--primary-black);
     background-image: url('/assets/images/timer-yellow.svg');
 }
 
@@ -26,4 +30,39 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.c-game-timer__heading--1 {
+    font-size: 56px;
+    line-height: 71px;
+}
+
+.c-game-timer__heading--4 {
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    :host {
+        margin-top: -15px;
+    }
+
+    .c-game-timer {
+        width: 125px;
+        height: 90px;
+    }
+
+    .c-game-timer__text {
+        padding-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .c-game-timer__heading--1 {
+        text-align: center;
+        font-size: 24px;
+        line-height: 31px;
+    }
 }

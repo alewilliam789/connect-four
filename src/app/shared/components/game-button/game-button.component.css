@@ -1,8 +1,13 @@
 .c-game-button {
-    width: 86px;
+    min-width: 108px;
     height: 39px;
     border-radius: 20px;
+    padding: 9.5px 21px;
     color: var(--primary-white);
     background-color: var(--primary-purple1);
     border: none;
+}
+
+.c-game-button:hover {
+    background-color: var(--primary-red);
 }

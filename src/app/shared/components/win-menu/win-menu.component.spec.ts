@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardGridComponent } from './board-grid.component';
+import { WinMenuComponent } from './win-menu.component';
 
-describe('BoardGridComponent', () => {
-  let component: BoardGridComponent;
-  let fixture: ComponentFixture<BoardGridComponent>;
+describe('WinMenuComponent', () => {
+  let component: WinMenuComponent;
+  let fixture: ComponentFixture<WinMenuComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BoardGridComponent]
+      declarations: [WinMenuComponent]
     });
-    fixture = TestBed.createComponent(BoardGridComponent);
+    fixture = TestBed.createComponent(WinMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
