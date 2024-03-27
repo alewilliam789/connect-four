@@ -19,6 +19,9 @@ import { BoardHeaderComponent } from './pages/game-page/layout/board-header/boar
 import { GameTimerComponent } from './shared/components/game-timer/game-timer.component';
 import { PlayerCardComponent } from './shared/components/player-card/player-card.component';
 import { WinMenuComponent } from './shared/components/win-menu/win-menu.component';
+import { GameSessionService } from './core/services/game-session.service';
+import { BoardFooterComponent } from './pages/game-page/layout/board-footer/board-footer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +40,13 @@ import { WinMenuComponent } from './shared/components/win-menu/win-menu.componen
     GameTimerComponent,
     PlayerCardComponent,
     WinMenuComponent,
+    BoardFooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [ GameSessionService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

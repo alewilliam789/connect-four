@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, zip, range, interval, startWith, switchMap, EMPTY } from 'rxjs';
-import { GameSessionService } from 'src/app/core/services/game-session.service';
+import { GameSessionService } from '../../../core/services/game-session.service';
 
 @Component({
   selector: 'app-game-timer',
@@ -11,25 +11,29 @@ export class GameTimerComponent implements OnInit {
 
   public currentTime : number = 30;
 
+  public currentPlayer : number = 1;
+
   private reset$ = new Subject();
 
-  constructor(public currentGame : GameSessionService) {}
+  constructor(private currentGame : GameSessionService) {}
 
   ngOnInit(): void {
     this.initializeTimer();
 
-    this.currentGame.currentPlayer$.subscribe({
-      next: () => {
+    this.currentGame.getCurrentPlayer().subscribe({
+      next: (player) => {
+        this.currentPlayer = player;
         this.resetTimer();
       }
     })
 
-    this.currentGame.reset$.subscribe({
+    this.currentGame.getResetState().subscribe({
       next: () => {
         this.resetTimer();
       }
     })
   }
+
 
   public initializeTimer(): void {
     const timer = this.reset$
@@ -38,13 +42,13 @@ export class GameTimerComponent implements OnInit {
         switchMap(() => zip(range(0,31),interval(1000))),
       );
 
-      const pausableTime$ = this.currentGame.paused$.pipe(switchMap((isPaused)=> isPaused ? EMPTY : timer));
+      const pausableTime$ = this.currentGame.getPausedState().pipe(switchMap((isPaused)=> isPaused ? EMPTY : timer));
 
     pausableTime$.subscribe(() => {
       this.currentTime = this.currentTime - 1;
       if(this.currentTime == 0) {
         this.currentTime = 30;
-        this.currentGame.currentPlayer$.next(this.currentGame.currentPlayer$.value == 1 ? 2 : 1);
+        this.currentGame.setCurrentPlayer(this.currentPlayer == 1 ? 2 : 1);
         this.resetTimer();
       }
     })

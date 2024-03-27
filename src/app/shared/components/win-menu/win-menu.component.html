@@ -1,7 +1,7 @@
 <menu class="c-win-menu l-win-menu">
-    <div class="c-win-menu__text">
-        <h4 class="heading xs">PLAYER {{currentGame.currentPlayer$}}</h4>
-        <h1 class="heading lg">WINS</h1>
+    <div class="c-win-menu__text l-win-menu__text">
+        <h4 class="c-win-menu__player-text">PLAYER {{winner}}</h4>
+        <h1 class="c-win-menu__win-text">WINS</h1>
     </div>
-    <app-game-button [buttonText] = "'PLAY AGAIN'"></app-game-button>
+    <app-game-button [buttonText] = "'PLAY AGAIN'" (click)="onPlayAgain()"></app-game-button>
 </menu>

@@ -5,6 +5,8 @@
 
 
 .c-win-menu {
+    position: relative;
+    z-index: 4;
     width: 285px;
     height: 160px;
     border: 3px solid black;
@@ -20,6 +22,49 @@
 }
 
 .c-win-menu__text {
+    font-family: 'Space Grotesk';
+    font-weight: bold;
+}
+
+.l-win-menu__text {
     text-align: center;
     margin-top: 17px;
+}
+
+.c-win-menu__player-text {
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.c-win-menu__win-text {
+    font-size: 56px;
+    line-height: 71px;
+}
+
+
+@media (max-width: 767px) {
+    :host {
+        margin-top: -25px;
+    }
+
+    .c-win-menu {
+        width: 160px;
+        height: 105px;
+    }
+
+    .l-win-menu__text {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 8px;
+    }
+
+    .c-win-menu__player-text {
+        font-size: 16px;
+        line-height: 21px;
+    }
+    
+    .c-win-menu__win-text {
+        font-size: 16px;
+        line-height: 21px;
+    }
 }

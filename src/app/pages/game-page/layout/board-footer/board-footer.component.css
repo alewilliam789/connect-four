@@ -1,0 +1,62 @@
+:host {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:  700px auto;
+}
+
+.c-board-footer {
+    grid-row: 2;
+    width: 100vw;
+    border-radius: 60px 60px 0px 0px;
+    visibility: visible;
+}
+
+.c-board-footer--base {
+    background-color: var(--primary-purple1);
+}
+
+.c-board-footer--player-1 {
+    background-color: var(--primary-red);
+}
+
+.c-board-footer--player-2 {
+    background-color: var(--primary-yellow);
+}
+
+@media (max-height: 880px) and (min-width: 1181px){
+    .c-board-footer {
+        visibility: collapse;
+    }
+}
+
+@media (max-height: 1030px) and (max-width:1180px) and (min-width: 769px){
+    
+    .c-board-footer {
+        visibility: collapse;
+    }
+}
+
+@media (max-height: 666px) and (max-width: 767px) {
+    .c-board-footer {
+        visibility: collapse;
+    }
+}
+
+
+@media (max-width : 1180px){
+    :host {
+        grid-template-rows:  840px auto;
+    }
+}
+
+@media (max-width : 767px){
+    :host {
+        grid-template-rows:  560px auto;
+    }
+}

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GameSessionService } from 'src/app/core/services/game-session.service';
+import { GameSessionService } from '../../../core/services/game-session.service';
 
 @Component({
   selector: 'app-game-button',

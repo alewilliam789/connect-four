@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MenuButtonContents } from '../../types/menu-button.types';
+import { MenuButtonContents } from '../../types';
 
 @Component({
   selector: 'app-menu-button',
