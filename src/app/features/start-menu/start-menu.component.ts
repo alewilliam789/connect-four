@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuButtonContents } from 'src/app/shared/types/menu-button.types';
+import { MenuButtonContents } from '../../shared/types';
 
 @Component({
   selector: 'app-start-menu',

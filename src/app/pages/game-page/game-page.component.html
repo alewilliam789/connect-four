@@ -5,10 +5,11 @@
             <app-player-card></app-player-card>
             <app-player-card [isPlayer1]="false"></app-player-card>
         </div>
-        <app-player-card class="p-game__large-player-cards"></app-player-card>
+        <app-player-card class="p-game__large-player-cards" [currentWins]="getPlayer1WinState()"></app-player-card>
         <app-game-board></app-game-board>
-        <app-player-card class="p-game__large-player-cards" [isPlayer1]="false"></app-player-card>
+        <app-player-card class="p-game__large-player-cards" [isPlayer1]="false" [currentWins]="getPlayer2WinState()"></app-player-card>
     </div>
-    <app-game-timer *ngIf="!currentGame.didWin"></app-game-timer>
-    <app-win-menu *ngIf="currentGame.didWin"></app-win-menu>
+    <app-game-timer *ngIf="!getWinState()"></app-game-timer>
+    <app-win-menu *ngIf="getWinState()"></app-win-menu>
+    <app-board-footer></app-board-footer>
 </main>

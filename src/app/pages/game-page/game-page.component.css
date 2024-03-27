@@ -16,7 +16,20 @@
     display: none;
 }
 
+@media (max-height: 880px) and (min-width: 1181px){
+    .p-game-board {
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-height: 1016px) and (max-width: 1180px) and (min-width:769px){
+    .p-game-board {
+        padding-bottom: 50px;
+    }
+}
+
 @media (max-width: 1180px){
+
     .p-game {
         display: flex;
         flex-direction: column;
@@ -36,6 +49,7 @@
 }
 
 @media (max-width: 767px) {
+
     .p-game {
         display: flex;
         flex-direction: column;
