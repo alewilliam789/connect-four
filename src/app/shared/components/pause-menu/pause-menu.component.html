@@ -1,0 +1,12 @@
+<div class="c-pause-menu__background">
+    <menu class="c-pause-menu l-pause-menu">
+        <div class="c-pause-menu__content l-pause-menu__content">
+            <h1 class="c-pause-menu__heading">PAUSE</h1>
+            <div class="l-pause-menu__buttons">
+                <ng-container *ngFor="let button of pause_buttons; let i = index">
+                    <app-menu-button [contents]="button" (clickEmitter)="functionSelection(i)"></app-menu-button>
+                </ng-container>
+            </div>
+        </div>
+    </menu>
+</div>

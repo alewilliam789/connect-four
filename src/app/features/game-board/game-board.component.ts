@@ -19,17 +19,15 @@ export class GameBoardComponent {
   ngOnInit(): void {
 
     this.currentGame.getResetState().subscribe((reset)=>{
-      if(reset && this.currentGame.winner.didWin){
-        this.currentGame.resetBoard();  
-        for(let i = 1; i <= 7; i++){
-          document.getElementById(`sub-column-${i}`)?.replaceChildren();
-        }
+      if(this.currentGame.winner.didWin){
+        this.currentGame.resetBoard();
       }
       else {
         this.currentGame.resetGame();
-        for(let i = 1; i <= 7; i++){
-          document.getElementById(`sub-column-${i}`)?.replaceChildren();
-        }
+      }
+
+      for(let i = 1; i <= 7; i++){
+        document.getElementById(`sub-column-${i}`)?.replaceChildren();
       }
     })
 

@@ -42,7 +42,8 @@ export class GameTimerComponent implements OnInit {
         switchMap(() => zip(range(0,31),interval(1000))),
       );
 
-      const pausableTime$ = this.currentGame.getPausedState().pipe(switchMap((isPaused)=> isPaused ? EMPTY : timer));
+      const pausableTime$ = this.currentGame.getPausedState()
+        .pipe(switchMap((isPaused)=> isPaused ? EMPTY : timer));
 
     pausableTime$.subscribe(() => {
       this.currentTime = this.currentTime - 1;

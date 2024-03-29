@@ -173,7 +173,6 @@ export class GameSessionService {
     ];
 
     this.winner.didWin = false;
-
     this.currentPlayer$.next(1);
   }
 

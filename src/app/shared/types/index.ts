@@ -11,6 +11,7 @@ export interface MenuButtonContents {
     buttonText : string;
     svgImage : string | null;
     isCenter : boolean;
-    backgroundColor : '--primary-white' | '--primary-red' | '--primary-yellow';
-    buttonRoute : '' | 'play' | 'rules';
+    backgroundColor : 'white' | 'yellow';
+    buttonRoute : '' | 'play' | 'rules' | null;
+    hoverColor : 'red' | null;
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GameSessionService } from '../../core/services/game-session.service';
 
 @Component({
@@ -20,5 +20,9 @@ export class GamePageComponent {
 
   public getPlayer2WinState(){
     return this.currentGame.player2.wins;
+  }
+
+  public getPauseState(){
+    return this.currentGame.getPausedState();
   }
 }
