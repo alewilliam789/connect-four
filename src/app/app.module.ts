@@ -21,6 +21,7 @@ import { PlayerCardComponent } from './shared/components/player-card/player-card
 import { WinMenuComponent } from './shared/components/win-menu/win-menu.component';
 import { GameSessionService } from './core/services/game-session.service';
 import { BoardFooterComponent } from './pages/game-page/layout/board-footer/board-footer.component';
+import { PauseMenuComponent } from './shared/components/pause-menu/pause-menu.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { BoardFooterComponent } from './pages/game-page/layout/board-footer/boar
     PlayerCardComponent,
     WinMenuComponent,
     BoardFooterComponent,
+    PauseMenuComponent,
   ],
   imports: [
     BrowserModule,

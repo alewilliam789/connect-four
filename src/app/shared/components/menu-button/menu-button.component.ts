@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuButtonContents } from '../../types';
 
 @Component({
@@ -11,7 +11,16 @@ export class MenuButtonComponent {
     buttonText : '',
     svgImage : null,
     isCenter : false,
-    backgroundColor : '--primary-white',
+    backgroundColor : 'white',
     buttonRoute : '',
+    hoverColor : null,
   };
+
+  @Output() clickEmitter : EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public onMenuButtonClick(){
+    this.clickEmitter.emit();
+  }
+
+
 }

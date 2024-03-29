@@ -19,11 +19,11 @@ export class BoardHeaderComponent implements OnInit {
   }
 
   menuButtonClicked(){
-    this.currentGame.setPausedState(!this.paused)
+    this.currentGame.setPausedState(this.paused);
   }
 
   restartButtonClicked(){
-    this.currentGame.setPausedState(true);
+    this.currentGame.setResetState(true);
   }
 
 }

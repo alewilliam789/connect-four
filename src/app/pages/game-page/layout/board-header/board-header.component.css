@@ -1,4 +1,6 @@
 :host {
+    position: relative;
+    z-index: 3;
     margin-top: 53px;
     margin-bottom: 17px;
 }

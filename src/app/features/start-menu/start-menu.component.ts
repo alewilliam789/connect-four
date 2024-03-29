@@ -13,15 +13,17 @@ export class StartMenuComponent {
       buttonText : "PLAY VS PLAYER",
       svgImage : "/assets/images/player-vs-player.svg",
       isCenter : false,
-      backgroundColor : '--primary-yellow',
-      buttonRoute : 'play'
+      backgroundColor : 'yellow',
+      buttonRoute : 'play',
+      hoverColor : null,
     },
     {
       buttonText : "GAME RULES",
       svgImage : null,
       isCenter : false,
-      backgroundColor : '--primary-white',
-      buttonRoute : 'rules'
+      backgroundColor : 'white',
+      buttonRoute : 'rules',
+      hoverColor : null,
     }
   ];
 }
