@@ -1,18 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameSessionService } from '../../../../core/services/game-session.service';
+import { Winner } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-board-footer',
   templateUrl: './board-footer.component.html',
   styleUrls: ['./board-footer.component.css']
 })
-export class BoardFooterComponent {
+export class BoardFooterComponent  implements OnInit {
+
+  private winner : Winner = {player: 1, didWin: false};
 
   constructor(private currentGame : GameSessionService){}
 
+  ngOnInit(): void {
+      this.currentGame.getWinState().subscribe((winState)=>{
+        this.winner = winState;
+      })
+  }
+
   public setBackgroundColor(){
-    if(this.currentGame.winner.didWin){
-      if(this.currentGame.winner.player == 1){
+    if(this.winner.didWin){
+      if(this.winner.player == 1){
         return 'c-board-footer--player-1';
       }
       else {

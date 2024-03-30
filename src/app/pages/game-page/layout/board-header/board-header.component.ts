@@ -22,8 +22,9 @@ export class BoardHeaderComponent implements OnInit {
     this.currentGame.setPausedState(this.paused);
   }
 
-  restartButtonClicked(){
+  refreshButtonClicked(){
     this.currentGame.setResetState(true);
+    this.currentGame.resetBoard();
   }
 
 }

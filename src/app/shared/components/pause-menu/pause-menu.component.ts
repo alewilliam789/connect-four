@@ -64,6 +64,7 @@ export class PauseMenuComponent  implements OnInit {
 
   public onRestartClick(){
     this.currentGame.setResetState(true);
+    this.currentGame.resetGame();
     this.currentGame.setPausedState(this.isPaused);
   }
 

@@ -1,4 +1,4 @@
-<app-pause-menu *ngIf="getPauseState() | async"></app-pause-menu>
+<app-pause-menu *ngIf="isPaused"></app-pause-menu>
 <main class="p-game-board">
     <app-board-header></app-board-header>
     <div class="p-game">
@@ -10,7 +10,7 @@
         <app-game-board></app-game-board>
         <app-player-card class="p-game__large-player-cards" [isPlayer1]="false" [currentWins]="getPlayer2WinState()"></app-player-card>
     </div>
-    <app-game-timer *ngIf="!getWinState()"></app-game-timer>
-    <app-win-menu *ngIf="getWinState()"></app-win-menu>
+    <app-game-timer *ngIf="!didWin && !didTie"></app-game-timer>
+    <app-win-menu *ngIf="didWin || didTie"></app-win-menu>
     <app-board-footer></app-board-footer>
 </main>

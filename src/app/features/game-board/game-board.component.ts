@@ -1,7 +1,7 @@
 import { Component, Renderer2 } from '@angular/core';
 import { GameSessionService } from '../../core/services/game-session.service';
-import { GameTimerComponent } from '../../shared/components/game-timer/game-timer.component';
 import { numSequence } from '../../shared/utils'
+import { Winner } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-game-board',
@@ -14,18 +14,17 @@ export class GameBoardComponent {
 
   public currentPlayer : number = 1;
 
+  private winner : Winner = {player: 1, didWin: false};
+
   constructor(private currentGame : GameSessionService, private renderer : Renderer2){}
 
   ngOnInit(): void {
 
-    this.currentGame.getResetState().subscribe((reset)=>{
-      if(this.currentGame.winner.didWin){
-        this.currentGame.resetBoard();
-      }
-      else {
-        this.currentGame.resetGame();
-      }
+    this.currentGame.getWinState().subscribe((winState)=>{
+      this.winner = winState;
+    })
 
+    this.currentGame.getResetState().subscribe((reset)=>{
       for(let i = 1; i <= 7; i++){
         document.getElementById(`sub-column-${i}`)?.replaceChildren();
       }
@@ -88,7 +87,7 @@ export class GameBoardComponent {
     }
 
 
-    if(currentColumn.children.length < 6 && !this.currentGame.winner.didWin) {
+    if(currentColumn.children.length < 6 && !this.winner.didWin) {
       const picture : HTMLPictureElement = this.renderer.createElement('picture');
       this.renderer.addClass(picture, 'l-board__piece');
 
@@ -100,7 +99,7 @@ export class GameBoardComponent {
       this.renderer.appendChild(picture,piece);
 
       this.renderer.appendChild(currentColumn,picture);
-      this.currentGame.makeMove(Number(el.id[el.id.length-1]) -1, this.currentPlayer, minTime*currentSlot*1000);
+      this.currentGame.makeMove(matrixRow, matrixColumn, this.currentPlayer, minTime*currentSlot*1000);
     }
   }
 }

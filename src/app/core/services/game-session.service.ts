@@ -29,7 +29,19 @@ export class GameSessionService {
     wins: 0,
   }
 
-  public winner : Winner = {player: 1, didWin : false};
+  private win$ : BehaviorSubject<Winner> = new BehaviorSubject<Winner>({player: 1, didWin : false});
+
+  private winner : Winner = {player: 1, didWin: false};
+
+  public getWinState(){
+    return this.win$.asObservable();
+  }
+
+  public setWinState(newWinner : Winner){
+    this.win$.next(newWinner);
+  }
+
+  private moveCount : number = 0;
 
   private reset$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -40,8 +52,6 @@ export class GameSessionService {
   public setResetState(nextReset : boolean){
     this.reset$.next(nextReset);
   }
-
-
 
   private currentPlayer$: BehaviorSubject<number> = new BehaviorSubject(1);
 
@@ -58,7 +68,7 @@ export class GameSessionService {
     }
   }
 
-  private paused$ : BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private paused$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public getPausedState(){
     return this.paused$.asObservable();
@@ -68,20 +78,35 @@ export class GameSessionService {
     this.paused$.next(!currentPause);
   }
 
-  public makeMove(columnNumber : number, currentPlayer: number, minTime : number) {
-    let currentSlot : number;
-    
-    for (let i = 5; i >= 0; i--) {
-      currentSlot = this.gameBoard[i][columnNumber];
+  private tied$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-      if(currentSlot == 0){
-        this.gameBoard[i][columnNumber] = currentPlayer;
-        this.checkWin(i,columnNumber,currentPlayer, minTime);
-        break;
-      }
+  public getTiedState(){
+    return this.tied$.asObservable();
+  }
+
+  public setTiedState(tiedState : boolean){
+    this.tied$.next(tiedState);
+  }
+
+  constructor(){
+    this.getWinState().subscribe((winState)=>{
+      this.winner.didWin = winState.didWin;
+    });
+  }
+
+  public makeMove(rowNumber : number, columnNumber : number, currentPlayer: number, minTime : number) {
+
+    this.moveCount++;
+
+    if(this.moveCount == 42){
+      this.setTiedState(true);
     }
+    else {
+      this.gameBoard[rowNumber][columnNumber] = currentPlayer;
+      this.checkWin(rowNumber,columnNumber,currentPlayer, minTime);
 
-    this.setCurrentPlayer(currentPlayer);
+      this.setCurrentPlayer(currentPlayer);
+    }
   }
 
   private checkWin(rowNumber: number, columnNumber : number, currentPlayer : number, minTime : number){
@@ -151,8 +176,7 @@ export class GameSessionService {
 
 
   private executeWin(currentPlayer : number) {
-    this.winner.player = currentPlayer;
-    this.winner.didWin = true;
+    this.setWinState({player: currentPlayer, didWin: true});
 
     if(currentPlayer == 1){
       this.player1.wins++;
@@ -171,6 +195,8 @@ export class GameSessionService {
       [0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0]
     ];
+
+    this.moveCount = 0;
 
     this.winner.didWin = false;
     this.currentPlayer$.next(1);
