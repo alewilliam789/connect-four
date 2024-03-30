@@ -6,12 +6,28 @@ import { GameSessionService } from '../../core/services/game-session.service';
   templateUrl: './game-page.component.html',
   styleUrls: ['./game-page.component.css']
 })
-export class GamePageComponent {
+export class GamePageComponent implements OnInit {
+
+  public didTie : boolean = false;
+
+  public didWin : boolean = false;
+
+  public isPaused : boolean = false;
 
   constructor(private currentGame : GameSessionService){}
 
-  public getWinState(){
-    return this.currentGame.winner.didWin;
+  ngOnInit(): void {
+    this.currentGame.getPausedState().subscribe((pauseState)=>{
+      this.isPaused = pauseState
+    })
+
+    this.currentGame.getTiedState().subscribe((tieState)=>{
+      this.didTie = tieState;
+    })
+
+    this.currentGame.getWinState().subscribe((winState)=>{
+      this.didWin = winState.didWin;
+    })
   }
 
   public getPlayer1WinState(){
@@ -20,9 +36,5 @@ export class GamePageComponent {
 
   public getPlayer2WinState(){
     return this.currentGame.player2.wins;
-  }
-
-  public getPauseState(){
-    return this.currentGame.getPausedState();
   }
 }
