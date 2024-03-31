@@ -49,7 +49,7 @@ export class GameTimerComponent implements OnInit {
       this.currentTime = this.currentTime - 1;
       if(this.currentTime == 0) {
         this.currentTime = 30;
-        this.currentGame.setCurrentPlayer(this.currentPlayer == 1 ? 2 : 1);
+        this.currentGame.setCurrentPlayer(this.currentPlayer);
         this.resetTimer();
       }
     })
