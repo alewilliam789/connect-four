@@ -72,6 +72,7 @@ body {
 .heading {
     font-family: 'Space Grotesk';
     font-weight: bold;
+    text-decoration: none;
 
     &.lg {
         font-size: 56px;
