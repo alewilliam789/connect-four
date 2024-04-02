@@ -17,12 +17,10 @@
 
 .c-game-timer--player-1 {
     color: var(--primary-white);
-    background-image: url('/assets/images/timer-red.svg');
 }
 
 .c-game-timer--player-2 {
     color: var(--primary-black);
-    background-image: url('/assets/images/timer-yellow.svg');
 }
 
 .c-game-timer__text {

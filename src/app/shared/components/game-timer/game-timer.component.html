@@ -1,4 +1,4 @@
-<div class="c-game-timer l-game-timer" [ngClass]="currentPlayer == 1 ? 'c-game-timer--player-1' : 'c-game-timer--player-2'">
+<div class="c-game-timer l-game-timer" [ngClass]="currentPlayer == 1 ? 'c-game-timer--player-1' : 'c-game-timer--player-2'" [style.background-image]="currentPlayer == 1 ? 'url(/assets/images/timer-red.svg)' : 'url(/assets/images/timer-yellow.svg)'">
     <div class="c-game-timer__text">
         <h4 class="heading c-game-timer__heading--4">PLAYER {{ currentPlayer }}</h4>
         <h1 class="heading c-game-timer__heading--1">{{ currentTime }}</h1>
