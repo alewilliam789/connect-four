@@ -9,7 +9,6 @@
     z-index: 3;
     width: 191px;
     height: 150px;
-    color: var(--primary-white);
     border-radius: 20px;
     box-shadow: 0px 10px var(--primary-black);
     background-size: cover;
@@ -17,10 +16,12 @@
 
 .c-game-timer--player-1 {
     color: var(--primary-white);
+    background-image: url('/assets/images/timer-red.svg');
 }
 
 .c-game-timer--player-2 {
     color: var(--primary-black);
+    background-image: ('/assets/images/timer-red.svg');
 }
 
 .c-game-timer__text {
@@ -47,8 +48,26 @@
     }
 
     .c-game-timer {
-        width: 125px;
-        height: 90px;
+        position: relative;
+        z-index: 3;
+        width: 95px;
+        height: 95px;
+        border: 3px solid black;
+        border-radius: 50%;
+        box-shadow: 0px 5px var(--primary-black);
+        background-size: cover;
+    }
+    
+    .c-game-timer--player-1 {
+        color: var(--primary-white);
+        background-image: none;
+        background-color: var(--primary-red);
+    }
+    
+    .c-game-timer--player-2 {
+        color: var(--primary-black);
+        background-image: none;
+        background-color: var(--primary-yellow);
     }
 
     .c-game-timer__text {
