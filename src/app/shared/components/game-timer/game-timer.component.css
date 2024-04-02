@@ -21,7 +21,7 @@
 
 .c-game-timer--player-2 {
     color: var(--primary-black);
-    background-image: ('/assets/images/timer-red.svg');
+    background-image: ('/assets/images/timer-yellow.svg');
 }
 
 .c-game-timer__text {
