@@ -1,5 +1,5 @@
 :host {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     z-index: 0;
@@ -58,5 +58,19 @@
 @media (max-width : 767px){
     :host {
         grid-template-rows:  560px auto;
+    }
+}
+
+@supports (hanging-punctuation: first) {
+    @media (max-height: 666px) and (max-width: 767px) and (orientation: potrait){
+        .c-board-footer {
+            visibility: collapse;
+        }
+    }
+
+    @media (max-width : 767px) and (orientation: potrait){
+        :host {
+            grid-template-rows:  560px auto;
+        }
     }
 }
