@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, zip, range, interval, startWith, switchMap, EMPTY } from 'rxjs';
 import { GameSessionService } from '../../../core/services/game-session.service';
+import { ComputerService } from 'src/app/core/services/computer.service';
 
 @Component({
   selector: 'app-game-timer',
@@ -15,7 +16,7 @@ export class GameTimerComponent implements OnInit {
 
   private reset$ = new Subject();
 
-  constructor(private currentGame : GameSessionService) {}
+  constructor(private currentGame : GameSessionService, private computer : ComputerService) {}
 
   ngOnInit(): void {
     this.initializeTimer();
@@ -35,7 +36,7 @@ export class GameTimerComponent implements OnInit {
   }
 
 
-  public initializeTimer(): void {
+  private initializeTimer(): void {
     const timer = this.reset$
       .pipe(
         startWith(void 30),
@@ -49,14 +50,24 @@ export class GameTimerComponent implements OnInit {
       this.currentTime = this.currentTime - 1;
       if(this.currentTime == 0) {
         this.currentTime = 30;
+        this.computer.isTurn = true;
         this.currentGame.setCurrentPlayer(this.currentPlayer);
         this.resetTimer();
       }
     })
   }
 
-  public resetTimer(): void {
+  private resetTimer(): void {
     this.currentTime = 30;
     this.reset$.next(void 30);
+  }
+
+  public getGameTimerText(){
+    if(this.computer.isComputer && this.currentPlayer == 2){
+      return "CPU"
+    }
+    else{
+      return `PLAYER ${this.currentPlayer}`
+    }
   }
 }

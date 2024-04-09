@@ -8,6 +8,16 @@ import { GameSessionService } from '../../../core/services/game-session.service'
 })
 export class PlayerCardComponent {
 
-  @Input() isPlayer1 : boolean = true;
+  @Input() player : number = 1;
+  @Input() isComputer : boolean = false;
   @Input() currentWins : number = 0;
+
+  public getPlayerText(){
+    if(!this.isComputer){
+      return `PLAYER ${this.player}`;
+    }
+    else{
+      return "CPU"
+    }
+  }
 }

@@ -2,8 +2,8 @@
     <div class="c-start-menu__content l-start-menu__content">
         <img class="c-start-menu__logo" src="/assets/images/logo.svg"/>
         <div class="l-start-menu__buttons">
-            <ng-container *ngFor="let button of start_buttons">
-                <app-menu-button [contents]="button"></app-menu-button>
+            <ng-container *ngFor="let button of start_buttons; let i = index;">
+                <app-menu-button [contents]="button" (clickEmitter)="onMenuButtonClick(i)"></app-menu-button>
             </ng-container>
         </div>
     </div>

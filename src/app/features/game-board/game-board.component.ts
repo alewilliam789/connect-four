@@ -1,14 +1,15 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { GameSessionService } from '../../core/services/game-session.service';
 import { numSequence } from '../../shared/utils'
 import { Winner } from 'src/app/shared/types';
+import { ComputerService } from 'src/app/core/services/computer.service';
 
 @Component({
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
   styleUrls: ['./game-board.component.css']
 })
-export class GameBoardComponent {
+export class GameBoardComponent  implements OnInit {
   
   public numberArray = numSequence;
 
@@ -16,7 +17,8 @@ export class GameBoardComponent {
 
   private winner : Winner = {player: 1, didWin: false};
 
-  constructor(private currentGame : GameSessionService, private renderer : Renderer2){}
+
+  constructor(private currentGame : GameSessionService, private renderer : Renderer2, private computer : ComputerService){}
 
   ngOnInit(): void {
 
@@ -31,7 +33,14 @@ export class GameBoardComponent {
     })
 
     this.currentGame.getCurrentPlayer().subscribe((player)=>{
-      this.currentPlayer = player;
+
+      if(this.currentPlayer != player){
+        this.currentPlayer = player;
+
+        if(player == 2 && this.computer.isComputer){
+            this.computerMove();
+        }
+      }
     })
   }
 
@@ -53,9 +62,9 @@ export class GameBoardComponent {
     this.hideMarker(el.id[el.id.length-1]);
   }
 
-  public addCounterToColumn(el : HTMLElement) {
+  private addCounterToColumn(matrixColumn : number, currentPlayer : number){
 
-    let currentColumn = document.getElementById(`sub-column-${el.id[el.id.length-1]}`);
+    let currentColumn = document.getElementById(`sub-column-${matrixColumn+1}`);
 
 
     if(currentColumn == null){
@@ -66,25 +75,18 @@ export class GameBoardComponent {
     const minTime : number = 0.083;
 
     const matrixRow = currentSlot-1;
-    const matrixColumn = Number(el.id[el.id.length-1]) -1;
 
     const piece : HTMLImageElement = this.renderer.createElement("img");
     const highlight : HTMLImageElement = this.renderer.createElement("img");
 
     highlight.id = `highlight-${matrixRow}-${matrixColumn}`;
 
-    if(this.currentPlayer == 1) {
-      this.renderer.addClass(piece,'c-board__piece');
-      this.renderer.addClass(piece,'c-board__piece--player-1');
-      this.renderer.addClass(highlight, 'c-board__highlight');
-      this.renderer.addClass(highlight, 'c-board__piece--winner');
-    }
-    else {
-      this.renderer.addClass(piece,'c-board__piece');
-      this.renderer.addClass(piece,'c-board__piece--player-2');
-      this.renderer.addClass(highlight, 'c-board__highlight');
-      this.renderer.addClass(highlight, 'c-board__piece--winner');
-    }
+ 
+    this.renderer.addClass(piece,'c-board__piece');
+    this.renderer.addClass(piece,`c-board__piece--player-${currentPlayer}`);
+    this.renderer.addClass(highlight, 'c-board__highlight');
+    this.renderer.addClass(highlight, 'c-board__piece--winner');
+  
 
 
     if(currentColumn.children.length < 6 && !this.winner.didWin) {
@@ -99,7 +101,30 @@ export class GameBoardComponent {
       this.renderer.appendChild(picture,piece);
 
       this.renderer.appendChild(currentColumn,picture);
-      this.currentGame.makeMove(matrixRow, matrixColumn, this.currentPlayer, minTime*currentSlot*1000);
+      this.currentGame.makeMove(matrixRow, matrixColumn, currentPlayer, minTime*currentSlot*1000);
+    }
+  }
+
+
+
+  public playerMove(el : HTMLElement) {
+
+    if(!this.computer.isTurn){
+      this.addCounterToColumn(Number(el.id[el.id.length-1])-1,this.currentPlayer);
+      this.computer.isTurn = true;
+      this.currentGame.setCurrentPlayer(this.currentPlayer);
+    }
+  }
+
+  private computerMove() {
+    const foundColumn = this.computer.makeMove();
+
+    if(this.computer.isTurn){
+      setTimeout(()=>{
+        this.addCounterToColumn(foundColumn, 2);
+        this.currentGame.setCurrentPlayer(2);
+      },2000)
+      this.computer.isTurn = false;
     }
   }
 }

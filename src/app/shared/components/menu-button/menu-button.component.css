@@ -20,6 +20,10 @@
     background-color: var(--primary-yellow);
 }
 
+.red {
+    background-color: var(--primary-red);
+}
+
 .red:hover {
     background-color: var(--primary-red);
 }

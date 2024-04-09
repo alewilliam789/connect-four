@@ -1,14 +1,15 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { inject } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 import { Player, Winner } from '../../shared/types';
+import { ComputerService } from './computer.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameSessionService {
+export class GameSessionService implements OnDestroy {
 
   private document = inject(DOCUMENT);
 
@@ -28,6 +29,7 @@ export class GameSessionService {
   public player2 : Player = {
     wins: 0,
   }
+
 
   private win$ : BehaviorSubject<Winner> = new BehaviorSubject<Winner>({player: 1, didWin : false});
 
@@ -90,8 +92,16 @@ export class GameSessionService {
 
   constructor(){
     this.getWinState().subscribe((winState)=>{
-      this.winner.didWin = winState.didWin;
+      this.winner = winState;
     });
+  }
+
+  ngOnDestroy(): void {
+      this.win$.complete()
+      this.reset$.complete()
+      this.currentPlayer$.complete()
+      this.paused$.complete()
+      this.tied$.complete()
   }
 
   public makeMove(rowNumber : number, columnNumber : number, currentPlayer: number, minTime : number) {
@@ -104,8 +114,6 @@ export class GameSessionService {
     else {
       this.gameBoard[rowNumber][columnNumber] = currentPlayer;
       this.checkWin(rowNumber,columnNumber,currentPlayer, minTime);
-
-      this.setCurrentPlayer(currentPlayer);
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuButtonContents } from '../../shared/types';
+import { ComputerService } from 'src/app/core/services/computer.service';
 
 @Component({
   selector: 'app-start-menu',
@@ -9,6 +10,14 @@ import { MenuButtonContents } from '../../shared/types';
 export class StartMenuComponent {
 
   start_buttons : MenuButtonContents[] = [
+    {
+      buttonText : "PLAY VS CPU",
+      svgImage : "/assets/images/player-vs-cpu.svg",
+      isCenter : false,
+      backgroundColor : 'red',
+      buttonRoute : 'play',
+      hoverColor : null,
+    },
     {
       buttonText : "PLAY VS PLAYER",
       svgImage : "/assets/images/player-vs-player.svg",
@@ -26,4 +35,17 @@ export class StartMenuComponent {
       hoverColor : null,
     }
   ];
+
+  constructor(private computer : ComputerService){}
+
+  public onMenuButtonClick(index : number){
+
+    if(index == 0){
+      this.onCpuVsClick();
+    }
+  }
+
+  private onCpuVsClick(){
+    this.computer.isComputer = true;
+  }
 }

@@ -1,5 +1,5 @@
 <div class="c-board_markers"><img #current_marker class="c-board__marker" src="{{ currentPlayer == 1 ? '/assets/images/marker-red.svg':'/assets/images/marker-yellow.svg'}}" *ngFor="let n of numberArray(7); let i = index" id="marker-{{i+1}}"></div>
 <img class="c-board__top-grid">
 <img class="c-board__bottom-grid">
-<div class="c-board__grid l-board__grid c-board__grid--hover"><div #current_column class="c-board__column" *ngFor="let n of numberArray(7); let i = index" id="hover-column-{{i+1}}" (mouseover)="onMouseOverColumn(current_column)" (mouseleave)="onMouseLeaveColumn(current_column)" (click)="addCounterToColumn(current_column)"></div></div>
+<div class="c-board__grid l-board__grid c-board__grid--hover"><div #current_column class="c-board__column" *ngFor="let n of numberArray(7); let i = index" id="hover-column-{{i+1}}" (mouseover)="onMouseOverColumn(current_column)" (mouseleave)="onMouseLeaveColumn(current_column)" (click)="playerMove(current_column)"></div></div>
 <div class="c-board__grid l-board__grid c-board__grid--sub"><div #current_column class="c-board__column" *ngFor="let n of numberArray(7); let i = index" id="sub-column-{{i+1}}"></div></div>
