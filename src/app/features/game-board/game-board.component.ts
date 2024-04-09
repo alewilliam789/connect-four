@@ -39,6 +39,7 @@ export class GameBoardComponent  implements OnInit {
 
         if(player == 2 && this.computer.isComputer){
             this.computerMove();
+            this.computer.isTurn = false;
         }
       }
     })
@@ -108,10 +109,15 @@ export class GameBoardComponent  implements OnInit {
 
 
   public playerMove(el : HTMLElement) {
-
-    if(!this.computer.isTurn){
+    if(this.computer.isComputer){
+      if(!this.computer.isTurn && this.currentPlayer == 1){
+        this.addCounterToColumn(Number(el.id[el.id.length-1])-1,1);
+        this.computer.isTurn = true;
+        this.currentGame.setCurrentPlayer(1);
+      }
+    }
+    else {
       this.addCounterToColumn(Number(el.id[el.id.length-1])-1,this.currentPlayer);
-      this.computer.isTurn = true;
       this.currentGame.setCurrentPlayer(this.currentPlayer);
     }
   }
