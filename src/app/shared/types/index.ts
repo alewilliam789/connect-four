@@ -16,3 +16,10 @@ export interface MenuButtonContents {
     hoverColor : 'red' | null;
     textColor ?: 'white';
   }
+
+export interface PieceCount  {
+  'EW' : number[][];
+  'NS' : number[][];
+  'NWSE' : number[][];
+  'SWNE' : number[][];
+}

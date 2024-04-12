@@ -1,10 +1,10 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { inject } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-import { Player, Winner } from '../../shared/types';
-import { ComputerService } from './computer.service';
+import { Player, Winner, PieceCount } from '../../shared/types';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,10 @@ export class GameSessionService implements OnDestroy {
     [0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0]
   ];
+
+  public getGameBoard(){
+    return [...this.gameBoard];
+  }
 
   public player1 : Player = {
     wins : 0,
@@ -118,23 +122,26 @@ export class GameSessionService implements OnDestroy {
   }
 
   private checkWin(rowNumber: number, columnNumber : number, currentPlayer : number, minTime : number){
-    let pieceCount : number = 1;
+    let pieceCount : PieceCount = {
+      'EW' : [[rowNumber,columnNumber]],
+      'NS' : [[rowNumber,columnNumber]],
+      'NWSE' : [[rowNumber,columnNumber]],
+      'SWNE' : [[rowNumber,columnNumber]]
+    };
+
     let originalRow = rowNumber;
     let originalColumn = columnNumber;
 
     for(let i = -1; i <= 1; i++){
       for(let j = -1; j <= 1; j++){
         if(!(i == 0 && j == 0)){
+
           this.checkNeighbor(originalRow+i, originalColumn+j, currentPlayer, pieceCount, i,j, minTime);
           
           if(this.winner.didWin){
-            setTimeout(()=> {
-              this.setHighlight(rowNumber, columnNumber);
-            }, minTime+150);
             break;
           }
           else {
-            pieceCount = 1;
             originalRow = rowNumber;
             originalColumn = columnNumber;
           }
@@ -143,34 +150,39 @@ export class GameSessionService implements OnDestroy {
     }
   }
 
-  private checkNeighbor(rowNumber : number, columnNumber : number, currentPlayer : number, pieceCount : number, horizontal: number, vertical: number, minTime : number){
+  private checkNeighbor(rowNumber : number, columnNumber : number, currentPlayer : number, pieceCount : PieceCount, horizontal: number, vertical: number, minTime : number){
 
     if((rowNumber < 0 || columnNumber < 0) || (rowNumber > 5 || columnNumber > 6)){
       return;
     }
 
     if(this.gameBoard[rowNumber][columnNumber] == currentPlayer){
-      pieceCount++;
+      if( (horizontal == 1 || horizontal == -1) && vertical == 0){
+        pieceCount.EW.push([rowNumber,columnNumber]);
+      }
+      else if((horizontal == 1 || horizontal == -1) && vertical == 1){
+        pieceCount.SWNE.push([rowNumber,columnNumber]);
+      }
+      else if((horizontal == 1 || horizontal == -1) && vertical -1){
+        pieceCount.NWSE.push([rowNumber,columnNumber]);
+      }
+      else {
+        pieceCount.NS.push([rowNumber,columnNumber]);
+      }
     }
     else {
       return;
     }
 
-    if(pieceCount == 4){
-      setTimeout(()=> {
-        this.setHighlight(rowNumber, columnNumber);
-      },minTime);
-      this.executeWin(currentPlayer);
-      return;
-    }
-    else {
-      this.checkNeighbor(rowNumber+horizontal,columnNumber+vertical,currentPlayer,pieceCount,horizontal,vertical, minTime);
-      if(this.winner.didWin){
-        setTimeout(()=> {
-          this.setHighlight(rowNumber, columnNumber);
-        },minTime+50);
+
+    for (const [key, value] of Object.entries(pieceCount)) {
+      if(value.length == 4){
+        this.executeWin(currentPlayer, pieceCount, minTime);
+        return;
       }
     }
+
+    this.checkNeighbor(rowNumber+horizontal,columnNumber+vertical,currentPlayer,pieceCount,horizontal,vertical, minTime);
   }
 
   private setHighlight(rowNumber : number, columnNumber : number){
@@ -183,8 +195,24 @@ export class GameSessionService implements OnDestroy {
   }
 
 
-  private executeWin(currentPlayer : number) {
+  private executeWin(currentPlayer : number, pieceCount : PieceCount, minTime : number) {
     this.setWinState({player: currentPlayer, didWin: true});
+
+    setTimeout(()=>{
+      console.log("Drop");
+    },minTime);
+
+    for (const [key, value] of Object.entries(pieceCount)) {
+      if(value.length == 4){
+        let count = 1;
+        for (const point of value){
+          setTimeout(()=>{
+            this.setHighlight(point[0],point[1]);
+          }, minTime/count);
+          count++;
+        }
+      }
+    }
 
     if(currentPlayer == 1){
       this.player1.wins++;
