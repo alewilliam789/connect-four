@@ -91,7 +91,7 @@
         content: url('/assets/images/player-two.svg');
     }
 
-    .l-player-card__text---player-1 {
+    .l-player-card__text--player-1 {
         display: flex;
         flex-direction: row;
         align-items: center;
