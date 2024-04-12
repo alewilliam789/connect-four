@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GameSessionService } from '../../../core/services/game-session.service';
 import { Winner } from '../../types';
 
@@ -12,6 +12,8 @@ export class WinMenuComponent implements OnInit {
   public winner : Winner = {player: 1, didWin: false};
 
   public didTied : boolean = false;
+
+  @Input() isComputer : boolean = false;
 
   constructor(private currentGame : GameSessionService){}
 
@@ -43,6 +45,10 @@ export class WinMenuComponent implements OnInit {
       return 'YOU HAVE';
     }
     else {
+      if(this.isComputer && this.winner.player == 2){
+        return `CPU`;
+      }
+
       return `PLAYER ${this.winner.player}`;
     }
   }

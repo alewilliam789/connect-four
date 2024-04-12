@@ -44,7 +44,7 @@
 @media (min-width: 551px) {
 
     .c-start-menu {
-        margin-top: 232px;
+        margin-top: 182px;
         padding: 60px 40px;
         background-color: var(--primary-purple2);
         border: 3px solid black;
@@ -54,6 +54,6 @@
 
     .c-start-menu__content {
         width: 400px;
-        height: 305px;
+        height: 407px;
     }   
 }

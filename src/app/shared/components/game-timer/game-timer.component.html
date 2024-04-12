@@ -1,6 +1,6 @@
 <div class="c-game-timer l-game-timer" [ngClass]="currentPlayer == 1 ? 'c-game-timer--player-1' : 'c-game-timer--player-2'">
     <div class="c-game-timer__text">
-        <h4 class="heading c-game-timer__heading--4">PLAYER {{ currentPlayer }}</h4>
+        <h4 class="heading c-game-timer__heading--4">{{getGameTimerText()}}</h4>
         <h1 class="heading c-game-timer__heading--1">{{ currentTime }}</h1>
     </div>
 </div>

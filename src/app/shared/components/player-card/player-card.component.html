@@ -1,7 +1,7 @@
-<article class="c-player-card" [ngClass]="isPlayer1 ? 'l-player-card' : 'l-player-card--player-2'">
-    <img [ngClass]="isPlayer1 ? 'c-player-card__icon--player-1' : 'c-player-card__icon--player-2'" alt="Player 1 Smiley Icon">
-    <div [ngClass]="isPlayer1 ? 'l-player-card__text' : 'l-player-card__text--player-2'" aria-describedby="Player 's Win Total">
-        <h3 class="heading c-player-card__header-3">PLAYER {{isPlayer1 ? '1' : '2'}}</h3>
+<article class="c-player-card l-player-card--player-{{player}}">
+    <img [ngClass]="{'c-player-card__icon--player-1': player == 1, 'c-player-card__icon--player-2': player == 2, 'c-player-card__icon--computer': isComputer}" alt="Player {{player}} Smiley Icon">
+    <div class="l-player-card__text--player-{{player}}" aria-describedby="Player 's Win Total">
+        <h3 class="heading c-player-card__header-3">{{getPlayerText()}}</h3>
         <h1 class="heading c-player-card__header-1">{{ currentWins }}</h1>
     </div>
 </article>

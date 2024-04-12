@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameSessionService } from '../../core/services/game-session.service';
+import { ComputerService } from 'src/app/core/services/computer.service';
 
 @Component({
   selector: 'app-game-page',
@@ -14,7 +15,9 @@ export class GamePageComponent implements OnInit {
 
   public isPaused : boolean = false;
 
-  constructor(private currentGame : GameSessionService){}
+  public isComputer : boolean = false;
+
+  constructor(private currentGame : GameSessionService, private computer : ComputerService){}
 
   ngOnInit(): void {
     this.currentGame.getPausedState().subscribe((pauseState)=>{
@@ -28,6 +31,8 @@ export class GamePageComponent implements OnInit {
     this.currentGame.getWinState().subscribe((winState)=>{
       this.didWin = winState.didWin;
     })
+
+    this.isComputer = this.computer.isComputer;
   }
 
   public getPlayer1WinState(){

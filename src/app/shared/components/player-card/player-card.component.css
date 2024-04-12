@@ -7,7 +7,7 @@
     box-shadow: 0px 10px var(--primary-black);
 }
 
-.l-player-card {
+.l-player-card--player-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +31,12 @@
     content: url('/assets/images/player-two.svg');
 }
 
-.l-player-card__text {
+.c-player-card__icon--computer {
+    margin-top: -29.5px;
+    content: url('/assets/images/cpu.svg');
+}
+
+.l-player-card__text--player-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,7 +65,7 @@
         height: 100px;
     }
 
-    .l-player-card {
+    .l-player-card--player-1 {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -86,7 +91,7 @@
         content: url('/assets/images/player-two.svg');
     }
 
-    .l-player-card__text {
+    .l-player-card__text---player-1 {
         display: flex;
         flex-direction: row;
         align-items: center;
