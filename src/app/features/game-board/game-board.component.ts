@@ -63,13 +63,13 @@ export class GameBoardComponent  implements OnInit {
     this.hideMarker(el.id[el.id.length-1]);
   }
 
-  private addCounterToColumn(matrixColumn : number, currentPlayer : number){
+  private addCounterToColumn(matrixColumn : number, currentPlayer : number) : boolean {
 
     let currentColumn = document.getElementById(`sub-column-${matrixColumn+1}`);
 
 
     if(currentColumn == null){
-      return;
+      return false;
     }
 
     const currentSlot = 6-currentColumn.children.length;
@@ -103,7 +103,10 @@ export class GameBoardComponent  implements OnInit {
 
       this.renderer.appendChild(currentColumn,picture);
       this.currentGame.makeMove(matrixRow, matrixColumn, currentPlayer, minTime*currentSlot*1000);
+      return true;
     }
+
+    return false;
   }
 
 
@@ -123,11 +126,14 @@ export class GameBoardComponent  implements OnInit {
   }
 
   private computerMove() {
-    const foundColumn = this.computer.makeMove();
+    
+    let foundColumn = this.computer.makeMove();
 
     if(this.computer.isTurn){
       setTimeout(()=>{
-        this.addCounterToColumn(foundColumn, 2);
+        while(!this.addCounterToColumn(foundColumn, 2)){
+          foundColumn = this.computer.makeMove();
+        }
         this.currentGame.setCurrentPlayer(2);
       },2000)
       this.computer.isTurn = false;
