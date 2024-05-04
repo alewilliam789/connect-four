@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GameSessionService } from '../../../core/services/game-session.service';
 import { Winner } from '../../types';
 import { ComputerService } from '../../../core/services/computer.service';
@@ -15,6 +15,7 @@ export class WinMenuComponent implements OnInit {
   public didTied : boolean = false;
 
   constructor(private currentGame : GameSessionService, private computer : ComputerService){}
+
 
   ngOnInit(): void {
     this.currentGame.getWinState().subscribe((winState)=> {
