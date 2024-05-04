@@ -3,8 +3,8 @@
     <app-board-header></app-board-header>
     <div class="p-game">
         <div class="p-game__small">
-            <app-player-card [player]="1"></app-player-card>
-            <app-player-card [player]="2" [isComputer]="isComputer"></app-player-card>
+            <app-player-card [player]="1" [currentWins]="getPlayer1WinState()"></app-player-card>
+            <app-player-card [player]="2" [isComputer]="isComputer" [currentWins]="getPlayer2WinState()"></app-player-card>
         </div>
         <app-player-card class="p-game__large-player-cards" [player]="1" [currentWins]="getPlayer1WinState()"></app-player-card>
         <app-game-board></app-game-board>
