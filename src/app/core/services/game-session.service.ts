@@ -160,7 +160,7 @@ export class GameSessionService implements OnDestroy {
       else if((horizontal == 1 || horizontal == -1) && vertical == 1){
         pieceCount.SWNE.push([rowNumber,columnNumber]);
       }
-      else if((horizontal == 1 || horizontal == -1) && vertical -1){
+      else if((horizontal == 1 || horizontal == -1) && vertical == -1){
         pieceCount.NWSE.push([rowNumber,columnNumber]);
       }
       else {
