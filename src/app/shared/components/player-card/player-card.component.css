@@ -81,14 +81,17 @@
     .c-player-card__icon--player-1 {
         margin-top: 0px;
         margin-left: -25px;
-        content: url('/assets/images/player-one.svg');
     }
     
     .c-player-card__icon--player-2 {
         margin-top: 0px;
         margin-left: 15px;
         margin-right: -25px;
-        content: url('/assets/images/player-two.svg');
+    }
+    .c-player-card__icon--computer {
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: -25px;
     }
 
     .l-player-card__text--player-1 {
