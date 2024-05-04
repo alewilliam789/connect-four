@@ -12,7 +12,7 @@ export class GameTimerComponent implements OnInit {
 
   public currentTime : number = 30;
 
-  public currentPlayer : number = 1;
+  public currentPlayer : number = 0;
 
   private reset$ = new Subject();
 
@@ -63,11 +63,11 @@ export class GameTimerComponent implements OnInit {
   }
 
   public getGameTimerText(){
-    if(this.computer.isComputer && this.currentPlayer == 2){
+    if(this.computer.isComputer && this.currentPlayer == 1){
       return "CPU"
     }
     else{
-      return `PLAYER ${this.currentPlayer}`
+      return `PLAYER ${this.currentPlayer+1}`
     }
   }
 }

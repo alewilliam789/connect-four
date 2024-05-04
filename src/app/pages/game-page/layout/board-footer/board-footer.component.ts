@@ -21,7 +21,7 @@ export class BoardFooterComponent  implements OnInit {
 
   public setBackgroundColor(){
     if(this.winner.didWin){
-      if(this.winner.player == 1){
+      if(this.winner.player == 0){
         return 'c-board-footer--player-1';
       }
       else {

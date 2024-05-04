@@ -14,17 +14,14 @@ export class GameSessionService implements OnDestroy {
   private document = inject(DOCUMENT);
 
   private gameBoard : number[][]= [
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0]
+    [-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1],
   ];
-
-  public getGameBoard(){
-    return [...this.gameBoard];
-  }
+  
 
   public player1 : Player = {
     wins : 0,
@@ -59,18 +56,18 @@ export class GameSessionService implements OnDestroy {
     this.reset$.next(nextReset);
   }
 
-  private currentPlayer$: BehaviorSubject<number> = new BehaviorSubject(1);
+  private currentPlayer$: BehaviorSubject<number> = new BehaviorSubject(0);
 
   public getCurrentPlayer(){
     return this.currentPlayer$.asObservable();
   }
 
   public setCurrentPlayer(currentPlayer : number){
-    if(currentPlayer == 1){
-      this.currentPlayer$.next(2);
+    if(currentPlayer == 0){
+      this.currentPlayer$.next(1);
     }
     else {
-      this.currentPlayer$.next(1);
+      this.currentPlayer$.next(0);
     }
   }
 
@@ -214,7 +211,7 @@ export class GameSessionService implements OnDestroy {
       }
     }
 
-    if(currentPlayer == 1){
+    if(currentPlayer == 0){
       this.player1.wins++;
     }
     else {
@@ -224,18 +221,18 @@ export class GameSessionService implements OnDestroy {
 
   public resetBoard(){
     this.gameBoard = [
-      [0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0]
+      [-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1],
     ];
 
     this.moveCount = 0;
 
     this.winner.didWin = false;
-    this.currentPlayer$.next(1);
+    this.currentPlayer$.next(0);
   }
 
   public resetGame(){

@@ -1,5 +1,5 @@
 <article class="c-player-card l-player-card--player-{{player}}">
-    <img [ngClass]="{'c-player-card__icon--player-1': player == 1, 'c-player-card__icon--player-2': player == 2, 'c-player-card__icon--computer': isComputer}" alt="Player {{player}} Smiley Icon">
+    <img [ngClass]="{'c-player-card__icon--player-1': player == 1, 'c-player-card__icon--player-2': (player == 2 && !isComputer), 'c-player-card__icon--computer': isComputer}" alt="Player {{player}} Smiley Icon">
     <div class="l-player-card__text--player-{{player}}" aria-describedby="Player 's Win Total">
         <h3 class="heading c-player-card__header-3">{{getPlayerText()}}</h3>
         <h1 class="heading c-player-card__header-1">{{ currentWins }}</h1>

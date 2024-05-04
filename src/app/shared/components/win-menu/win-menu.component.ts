@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameSessionService } from '../../../core/services/game-session.service';
 import { Winner } from '../../types';
+import { ComputerService } from '../../../core/services/computer.service';
 
 @Component({
   selector: 'app-win-menu',
@@ -9,13 +10,12 @@ import { Winner } from '../../types';
 })
 export class WinMenuComponent implements OnInit {
 
-  public winner : Winner = {player: 1, didWin: false};
+  public winner : Winner = {player: 0, didWin: false};
 
   public didTied : boolean = false;
 
-  @Input() isComputer : boolean = false;
+  constructor(private currentGame : GameSessionService, private computer : ComputerService){}
 
-  constructor(private currentGame : GameSessionService){}
 
   ngOnInit(): void {
     this.currentGame.getWinState().subscribe((winState)=> {
@@ -44,12 +44,11 @@ export class WinMenuComponent implements OnInit {
     if(this.didTied){
       return 'YOU HAVE';
     }
+    else if(this.winner.player == 1 && this.computer.isComputer){
+      return 'CPU';
+    }
     else {
-      if(this.isComputer && this.winner.player == 2){
-        return `CPU`;
-      }
-
-      return `PLAYER ${this.winner.player}`;
+      return `PLAYER ${this.winner.player+1}`;
     }
   }
 }
