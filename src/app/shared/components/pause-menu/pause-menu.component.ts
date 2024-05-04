@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuButtonContents } from '../../types';
 import { GameSessionService } from '../../../core/services/game-session.service';
+import { ComputerService } from 'src/app/core/services/computer.service';
 
 @Component({
   selector: 'app-pause-menu',
@@ -38,7 +39,7 @@ export class PauseMenuComponent  implements OnInit {
     },
   ];
 
-  constructor(private currentGame : GameSessionService){}
+  constructor(private currentGame : GameSessionService, private computer : ComputerService){}
 
   ngOnInit(): void {
       this.currentGame.getPausedState().subscribe((pauseState)=>{
@@ -63,12 +64,14 @@ export class PauseMenuComponent  implements OnInit {
   }
 
   public onRestartClick(){
+    this.computer.isComputer = false;
     this.currentGame.setResetState(true);
     this.currentGame.resetGame();
     this.currentGame.setPausedState(this.isPaused);
   }
 
   public onQuitClick(){
+    this.computer.isComputer = false;
     this.currentGame.resetGame();
     this.currentGame.setResetState(true);
     this.currentGame.setPausedState(this.isPaused);
