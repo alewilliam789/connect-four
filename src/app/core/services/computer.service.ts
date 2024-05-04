@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, firstValueFrom } from 'rxjs';
 import { GameSessionService } from './game-session.service';
-import { BehaviorSubject } from 'rxjs';
+
+interface MoveResponse {
+  move: number
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +17,16 @@ export class ComputerService {
 
   public isTurn : boolean = false;
 
+
+
   constructor() {}
 
+  public makeMove(previousMove : number) : number{
+    let randomOffset = Math.round(Math.random()*2)-1;
+    while(previousMove+randomOffset < 0 || previousMove+randomOffset > 6){
+      randomOffset = Math.round(Math.random()*2)-1;
+    }
 
-  public makeMove() : number {
-    // 1. Scan the board for possible moves
-  
-    return Math.round(Math.random()*6);
+    return previousMove+randomOffset;
   }
-
-
-
-
-
-
 }
